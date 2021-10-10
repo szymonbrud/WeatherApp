@@ -20,4 +20,10 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
   },
+  globals: {
+    describe: true,
+    beforeEach: true,
+    cy: true,
+    it: true,
+  },
 };
