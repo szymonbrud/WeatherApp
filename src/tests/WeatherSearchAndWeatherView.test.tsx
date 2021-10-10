@@ -25,7 +25,7 @@ describe('WeatherSearchAndWeatherView', () => {
     const weatherElement = screen.queryByText('bezchmurnie');
     expect(weatherElement).toBeNull();
 
-    const input = getByPlaceholderText('city');
+    const input = getByPlaceholderText('miasto');
 
     fireEvent.change(input, { target: { value: 'Kraków' } });
 
@@ -50,7 +50,7 @@ describe('WeatherSearchAndWeatherView', () => {
 
     expect(screen.queryByText('bezchmurnie')).toBeNull();
 
-    const input = getByPlaceholderText('city');
+    const input = getByPlaceholderText('miasto');
 
     fireEvent.change(input, { target: { value: 'nonExist' } });
 

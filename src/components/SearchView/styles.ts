@@ -13,7 +13,7 @@ const defaultStyleOfTextSearch = css`
   ::after {
     width: 100%;
     text-align: center;
-    content: 'The city was not found';
+    content: 'Nie znaleziono miasta';
     position: absolute;
     top: calc(100% + 25px);
     left: 50%;
@@ -46,7 +46,7 @@ export const SearchInputWrapper = styled.div`
     } else if (status === statusOfWeatherView.error) {
       return css`
         ${defaultStyleOfTextSearch};
-        content: 'Unexpected error! Reset application.';
+        content: 'Nieoczekiwany błąd! Odśwież stronę.';
         color: red;
       `;
     } else if (status === statusOfWeatherView.passed) {
@@ -63,7 +63,7 @@ export const SearchInputWrapper = styled.div`
         ::after {
           width: 100%;
           text-align: center;
-          content: 'change city';
+          content: 'zmień miasto';
           position: absolute;
           bottom: 70%;
           left: 50%;

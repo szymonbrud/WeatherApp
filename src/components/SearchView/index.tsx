@@ -16,7 +16,7 @@ const SearchView = (): ReactElement => {
       <SearchInputWrapper status={status}>
         <SearchInput
           type="text"
-          placeholder="city"
+          placeholder="miasto"
           onChange={getCityNameDebounce}
         />
       </SearchInputWrapper>

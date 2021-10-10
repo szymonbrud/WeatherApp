@@ -7,7 +7,7 @@ describe('SearchCityWeather', () => {
   it('SearchCityWeather', () => {
     cy.visit('http://localhost:3000');
 
-    cy.get('[placeholder="city"]').type(`Kraków`);
+    cy.get('[placeholder="miasto"]').type(`Kraków`);
     cy.contains('bezchmurnie');
   });
 });
