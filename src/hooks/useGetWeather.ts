@@ -5,17 +5,29 @@ import { getWeather } from 'requests';
 
 import { statusOfWeatherView, WeatherContext } from 'Context/WeatherContext';
 
+type getWeatherDataTypes = {
+  name: string;
+  cod: string | number;
+  weather: Array<{ description: string; icon: string }>;
+  main: {
+    temp: number;
+    humidity: number;
+    pressure: number;
+  };
+};
+
 const useGetWeather = (): any => {
-  const { changeStatus } = useContext(WeatherContext);
+  const { changeStatus, setData } = useContext(WeatherContext);
 
   const getCityName = (event: any) => {
     changeStatus(statusOfWeatherView.default);
     if (event.target.value) {
-      getWeather(event.target.value)
+      getWeather<getWeatherDataTypes>(event.target.value)
         .then((data) => {
           if (data.cod === '404') {
             changeStatus(statusOfWeatherView.notFoundCity);
           } else if (data.cod === 200) {
+            setData(data);
             changeStatus(statusOfWeatherView.passed);
           }
         })

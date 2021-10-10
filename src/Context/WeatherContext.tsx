@@ -12,9 +12,15 @@ const defaultContext = {
   status: statusOfWeatherView.default,
   data: null,
   changeStatus: (status: statusOfWeatherView) => null,
+  setData: (data: any) => null,
 };
 
-export const WeatherContext = React.createContext(defaultContext);
+export const WeatherContext = React.createContext<{
+  data: any;
+  status: statusOfWeatherView;
+  changeStatus: any;
+  setData: any;
+}>(defaultContext);
 
 export const WeatherContextProvider = ({
   children,
@@ -26,9 +32,12 @@ export const WeatherContextProvider = ({
   const changeStatus = (status: statusOfWeatherView) =>
     setState((prev) => ({ ...prev, status }));
 
+  const setData = (data: any): any => setState((prev) => ({ ...prev, data }));
+
   const contextState = {
     ...state,
     changeStatus,
+    setData,
   };
 
   return (

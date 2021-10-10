@@ -52,12 +52,25 @@ export const SearchInputWrapper = styled.div`
     } else if (status === statusOfWeatherView.passed) {
       return css`
         position: absolute;
-        top: 0;
+        top: 20px;
         left: 50%;
         transform: translateX(-50%);
 
         ::before {
           transform: scaleX(0.2);
+        }
+
+        ::after {
+          width: 100%;
+          text-align: center;
+          content: 'change city';
+          position: absolute;
+          bottom: 70%;
+          left: 50%;
+          transform: translateX(-50%);
+          color: #979797;
+          font-size: 14px;
+          font-family: 'M PLUS Rounded 1c', sans-serif;
         }
       `;
     }

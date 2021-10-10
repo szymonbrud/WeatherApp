@@ -22,14 +22,14 @@ describe('WeatherSearchAndWeatherView', () => {
 
     const { getByPlaceholderText } = render(<Component />);
 
-    const weatherElement = screen.queryByText('Weather');
+    const weatherElement = screen.queryByText('bezchmurnie');
     expect(weatherElement).toBeNull();
 
     const input = getByPlaceholderText('city');
 
     fireEvent.change(input, { target: { value: 'Kraków' } });
 
-    const weatherElemenet = await screen.findByText('Weather');
+    const weatherElemenet = await screen.findByText('bezchmurnie');
 
     expect(weatherElemenet).toBeDefined();
   });
@@ -48,12 +48,12 @@ describe('WeatherSearchAndWeatherView', () => {
 
     const { getByPlaceholderText } = render(<Component />);
 
-    expect(screen.queryByText('Weather')).toBeNull();
+    expect(screen.queryByText('bezchmurnie')).toBeNull();
 
     const input = getByPlaceholderText('city');
 
     fireEvent.change(input, { target: { value: 'nonExist' } });
 
-    expect(screen.queryByText('Weather')).toBeNull();
+    expect(screen.queryByText('bezchmurnie')).toBeNull();
   });
 });
