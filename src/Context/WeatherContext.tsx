@@ -1,6 +1,8 @@
 import React, { ReactElement, useState } from 'react';
 import PropTypes, { element } from 'prop-types';
 
+import { getWeatherDataTypes } from 'hooks/useGetWeather';
+
 export enum statusOfWeatherView {
   default,
   passed,
@@ -11,15 +13,15 @@ export enum statusOfWeatherView {
 const defaultContext = {
   status: statusOfWeatherView.default,
   data: null,
-  changeStatus: (status: statusOfWeatherView) => null,
-  setData: (data: any) => null,
+  changeStatus: () => {},
+  setData: () => {},
 };
 
 export const WeatherContext = React.createContext<{
-  data: any;
+  data: getWeatherDataTypes | null;
   status: statusOfWeatherView;
-  changeStatus: any;
-  setData: any;
+  changeStatus: (status: statusOfWeatherView) => void;
+  setData: (data: getWeatherDataTypes) => void;
 }>(defaultContext);
 
 export const WeatherContextProvider = ({
@@ -32,7 +34,9 @@ export const WeatherContextProvider = ({
   const changeStatus = (status: statusOfWeatherView) =>
     setState((prev) => ({ ...prev, status }));
 
-  const setData = (data: any): any => setState((prev) => ({ ...prev, data }));
+  const setData = (value: getWeatherDataTypes | any): void => {
+    setState((prev) => ({ ...prev, data: value }));
+  };
 
   const contextState = {
     ...state,
@@ -41,8 +45,6 @@ export const WeatherContextProvider = ({
   };
 
   return (
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
     <WeatherContext.Provider value={contextState}>
       {children}
     </WeatherContext.Provider>

@@ -5,7 +5,7 @@ import { getWeather } from 'requests';
 
 import { statusOfWeatherView, WeatherContext } from 'Context/WeatherContext';
 
-type getWeatherDataTypes = {
+export type getWeatherDataTypes = {
   name: string;
   cod: string | number;
   weather: Array<{ description: string; icon: string }>;
@@ -16,7 +16,7 @@ type getWeatherDataTypes = {
   };
 };
 
-const useGetWeather = (): any => {
+const useGetWeather = (): { getCityNameDebounce: (arg0: any) => void } => {
   const { changeStatus, setData } = useContext(WeatherContext);
 
   const getCityName = (event: any) => {
