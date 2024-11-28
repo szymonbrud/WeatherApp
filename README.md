@@ -1,6 +1,6 @@
 # Weather app
 
-live: https://szymonqqaz.github.io/WeatherApp
+live: [https://szymonqqaz.github.io/WeatherApp](https://szymonbrud.github.io/WeatherApp)
 
 ****
 
